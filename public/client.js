@@ -1,0 +1,26 @@
+
+(() => {
+         const jsonResult = document.getElementById('jsonResult')
+         const testForm = document.getElementById('testForm')
+         testForm.addEventListener('submit', e => {
+            e.preventDefault()
+            const url = new URL('https://diego-stock-price.glitch.me/api/stock-prices')
+            const formData = new FormData(testForm)
+            url.search = new URLSearchParams(formData)
+            fetch(url)
+               .then(response => response.json())
+               .then(result => jsonResult.textContent = JSON.stringify(result))
+               .catch(err => console.log(err))
+         })
+         const testForm2 = document.getElementById('testForm2')
+         testForm2.addEventListener('submit', e => {
+            e.preventDefault()
+            const url = new URL('https://diego-stock-price.glitch.me/api/stock-prices')
+            const formData = new FormData(testForm2)
+            url.search = new URLSearchParams(formData)
+            fetch(url)
+               .then(response => response.json())
+               .then(result => jsonResult.textContent = JSON.stringify(result))
+               .catch(err => console.log(err))
+         })
+     })()  
